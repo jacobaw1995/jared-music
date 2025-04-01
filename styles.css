@@ -199,6 +199,7 @@ form button:hover {
 /* Mobile adjustments */
 @media (max-width: 768px) {
     nav {
+        position: static; /* Remove sticky behavior on mobile */
         padding: 10px 15px;
         flex-direction: column;
         align-items: center;
@@ -236,10 +237,15 @@ form button:hover {
     form input, form textarea {
         font-size: 0.9em;
     }
-    .social-icons {
+    footer p {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 10px;
+    }
+    .social-icons {
+        display: inline-flex;
+        flex-direction: row;
         gap: 15px;
         margin-top: 10px;
     }
