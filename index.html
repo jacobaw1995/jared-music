@@ -21,25 +21,29 @@
             text-shadow: 2px 2px 6px #000;
             border-bottom: 4px solid #8b0000;
         }
+        nav {
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         h1 {
             margin: 0;
             font-size: 3.5em;
             letter-spacing: 3px;
             text-transform: uppercase;
         }
-        .bio {
+        .bio, .music, .gigs {
             max-width: 900px;
             margin: 40px auto;
             padding: 25px;
             text-align: center;
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: 1px solid #d3c8a2;
-        }
-        .music {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 25px;
             background: #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border: 1px solid #d3c8a2;
@@ -52,11 +56,12 @@
         p {
             line-height: 1.6;
         }
-        .coming-soon {
-            font-style: italic;
-            color: #555;
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 10px;
         }
-        footer {
+       <footer {
             text-align: center;
             padding: 25px;
             background: #3c2f2f;
@@ -88,6 +93,10 @@
 </head>
 <body>
     <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="booking.html">Booking</a>
+        </nav>
         <h1>Jared Walker Music</h1>
     </header>
     <section class="bio">
@@ -97,7 +106,15 @@
     </section>
     <section class="music">
         <h2>Latest Tracks</h2>
-        <p class="coming-soon">Music coming soon—stay tuned for Jared’s sound!</p>
+        <p>Check out Jared’s latest sound:</p>
+        <audio controls>
+            <source src="Damn Good Friends.M4a" type="audio/mp4">
+            Your browser doesn’t support audio playback.
+        </audio>
+    </section>
+    <section class="gigs">
+        <h2>Live Gigs</h2>
+        <p>Catch Jared every Thursday night at El Carreton in Greenville, OH. Bring your boots and enjoy some real country vibes!</p>
     </section>
     <footer>
         <p>© 2025 Jared | Follow: 
