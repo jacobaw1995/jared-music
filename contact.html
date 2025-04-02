@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact Jared Walker - Country Music</title>
     <meta name="description" content="Contact Jared Walker for inquiries. Country rock and traditional country music from Greenville, OH.">
     <meta name="keywords" content="Jared Walker, contact country music, Greenville OH">
@@ -28,7 +28,7 @@
             <i class="fas fa-bars"></i>
         </div>
     </nav>
-    <header></header>
+    <header    <header></header>
     <section class="contact">
         <h2>Get in Touch</h2>
         <p>For booking inquiries, use the <a href="booking.html">booking form</a>. For other questions, reach out directly:</p>
@@ -47,6 +47,11 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
+
+        window.addEventListener('load', () => {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
 
         hamburger.addEventListener('click', () => {
             console.log('Hamburger clicked');
