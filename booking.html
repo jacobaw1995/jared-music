@@ -52,8 +52,22 @@
         </p>
     </footer>
     <script>
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            console.log('Hamburger clicked');
+            navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        });
+
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                console.log('Hamburger key pressed');
+                navLinks.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+            }
         });
     </script>
 </body>
