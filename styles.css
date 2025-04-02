@@ -42,6 +42,10 @@ nav {
     align-items: center;
 }
 
+.nav-links.active {
+    display: flex;
+}
+
 nav a {
     color: #fff;
     margin: 0 20px;
@@ -62,13 +66,18 @@ nav a:hover {
     cursor: pointer;
 }
 
+.hamburger:focus {
+    outline: 2px solid #ff4500;
+    outline-offset: 2px;
+}
+
 header {
     position: relative;
-    background: url('jared-header.jpg') no-repeat center;
+    background: url('jared-header.jpg') no-repeat center center;
     background-size: cover;
     height: 500px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
 }
@@ -243,14 +252,10 @@ form button:hover {
 }
 
 /* Mobile adjustments */
-.hamburger:focus {
-    outline: 2px solid #ff4500;
-    outline-offset: 2px;
-}
 @media (max-width: 768px) {
     nav {
-        position: static;
-        padding: 10px 20px;
+        position: sticky;
+        padding: 15px 20px;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -272,7 +277,7 @@ form button:hover {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         width: 100%;
         background: #333;
@@ -289,29 +294,34 @@ form button:hover {
         display: block;
     }
     header {
+        min-height: 300px;
         height: auto;
         background-size: cover;
         background-position: center;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         padding: 0;
     }
     .header-cta {
-        margin: 20px auto;
+        margin: 20px 20px 20px auto;
         font-size: 1em;
         padding: 8px 16px;
     }
     .music {
-        display: none; /* Hide Latest Tracks in header on mobile */
+        display: none;
     }
     .music-section {
-        max-width: 300px;
-        margin: 20px auto;
+        max-width: 100%;
+        margin: 20px;
+        padding: 15px;
         transform: none;
     }
     .bio, .gigs, .booking, .contact {
         margin: 20px;
         padding: 15px;
+    }
+    audio {
+        max-width: 100%;
     }
     form input, form textarea {
         font-size: 0.9em;
