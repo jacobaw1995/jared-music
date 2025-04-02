@@ -60,17 +60,17 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-    
-        // Toggle menu on click
+
         hamburger.addEventListener('click', () => {
+            console.log('Hamburger clicked');
             navLinks.classList.toggle('active');
             hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
         });
-    
-        // Toggle menu on Enter or Space key
+
         hamburger.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
+                console.log('Hamburger key pressed');
                 navLinks.classList.toggle('active');
                 hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
             }
