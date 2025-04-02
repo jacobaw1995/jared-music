@@ -24,6 +24,9 @@
             <a href="booking.html">Booking</a>
             <a href="contact.html">Contact</a>
         </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
     <header></header>
     <section class="contact">
@@ -41,5 +44,10 @@
             </span>
         </p>
     </footer>
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
