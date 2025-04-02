@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jared Walker</title>
+    <title>Jared Walker - Country Music</title>
     <meta name="description" content="Jared Walker, a country rock singer/songwriter from Greenville, OH. Book Jared for your event and listen to his latest tracks!">
     <meta name="keywords" content="Jared Walker, country music, Greenville OH, singer songwriter, booking">
     <meta name="author" content="Jared Walker">
@@ -24,8 +24,12 @@
             <a href="booking.html">Booking</a>
             <a href="contact.html">Contact</a>
         </div>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
     <header>
+        <a href="booking.html" class="header-cta">Book Jared</a>
         <section class="music" id="music">
             <h2>Latest Tracks</h2>
             <p>Check out Jared’s latest sound:</p>
@@ -40,6 +44,14 @@
         <p>Jared is a country rock and traditional country singer/songwriter from Greenville, OH, and the surrounding areas. With influences like Dwight Yoakam, George Strait, and Jason Aldean, he crafts songs that blend gritty twang, heartfelt storytelling, and a touch of modern swagger.</p>
         <a href="booking.html" class="book-link">Book Jared</a>
     </section>
+    <section class="music-section">
+        <h2>Latest Tracks</h2>
+        <p>Check out Jared’s latest sound:</p>
+        <audio controls>
+            <source src="Damn Good Friends.m4a" type="audio/mp4">
+            Your browser doesn’t support audio playback.
+        </audio>
+    </section>
     <section class="gigs">
         <h2>Live Gigs</h2>
         <p>Catch Jared every Thursday night from 6-8 PM at El Carreton in Greenville, OH. Bring your boots and enjoy some real country vibes!</p>
@@ -53,5 +65,10 @@
             </span>
         </p>
     </footer>
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
