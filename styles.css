@@ -243,6 +243,10 @@ form button:hover {
 }
 
 /* Mobile adjustments */
+.hamburger:focus {
+    outline: 2px solid #ff4500;
+    outline-offset: 2px;
+}
 @media (max-width: 768px) {
     nav {
         position: static;
@@ -301,7 +305,7 @@ form button:hover {
         display: none; /* Hide Latest Tracks in header on mobile */
     }
     .music-section {
-        max-width: 200px;
+        max-width: 300px;
         margin: 20px auto;
         transform: none;
     }
