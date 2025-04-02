@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jared Walker - Country Music</title>
     <meta name="description" content="Jared Walker, a country rock singer/songwriter from Greenville, OH. Book Jared for your event and listen to his latest tracks!">
     <meta name="keywords" content="Jared Walker, country music, Greenville OH, singer songwriter, booking">
@@ -60,6 +60,11 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
+
+        window.addEventListener('load', () => {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
 
         hamburger.addEventListener('click', () => {
             console.log('Hamburger clicked');
