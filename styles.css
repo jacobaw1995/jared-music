@@ -46,7 +46,6 @@ nav {
 .nav-links.active {
     display: flex;
     z-index: 3;
-    background: #555; /* Temporary for debugging */
 }
 
 nav a {
@@ -288,15 +287,17 @@ form button:hover {
         background: #333;
         padding: 10px 0;
         z-index: 3;
+        box-sizing: border-box;
     }
     .nav-links.active {
         display: flex;
         z-index: 3;
-        background: #555; /* Temporary for debugging */
     }
     nav a {
         margin: 10px 0;
         font-size: 1em;
+        width: 100%;
+        text-align: center;
     }
     .hamburger {
         display: block;
