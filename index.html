@@ -15,7 +15,7 @@
     <nav>
         <div class="nav-left">
             <a href="index.html">
-                <img src="logo.png" alt="Jared's Logo" class="nav-logo">
+                <img src="logo.png" alt="Jared Walker's Logo" class="nav-logo">
             </a>
             <span class="nav-title">Jared Walker</span>
         </div>
@@ -24,20 +24,12 @@
             <a href="booking.html">Booking</a>
             <a href="contact.html">Contact</a>
         </div>
-        <div class="hamburger">
+        <div class="hamburger" tabindex="0" role="button" aria-label="Toggle navigation" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </div>
     </nav>
     <header>
         <a href="booking.html" class="header-cta">Book Jared</a>
-        <section class="music" id="music">
-            <h2>Latest Tracks</h2>
-            <p>Check out Jared’s latest sound:</p>
-            <audio controls>
-                <source src="Damn Good Friends.m4a" type="audio/mp4">
-                Your browser doesn’t support audio playback.
-            </audio>
-        </section>
     </header>
     <section class="bio">
         <h2>About Jared</h2>
@@ -66,8 +58,22 @@
         </p>
     </footer>
     <script>
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+    
+        // Toggle menu on click
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        });
+    
+        // Toggle menu on Enter or Space key
+        hamburger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navLinks.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+            }
         });
     </script>
 </body>
