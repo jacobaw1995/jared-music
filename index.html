@@ -1,85 +1,1135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jared Walker - Country Music</title>
-    <meta name="description" content="Jared Walker, a country rock singer/songwriter from Greenville, OH. Book Jared for your event and listen to his latest tracks!">
-    <meta name="keywords" content="Jared Walker, country music, Greenville OH, singer songwriter, booking">
-    <meta name="author" content="Jared Walker">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jared Walker — Country Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:      #C9A84C;
+      --gold-lt:   #E8C96A;
+      --rust:      #9B3A1E;
+      --cream:     #F5EDD8;
+      --charcoal:  #1A1510;
+      --dark:      #0D0B08;
+      --mid:       #2A2118;
+      --text-dim:  #8A7A60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .35;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(13,11,8,.95) 0%, transparent 100%);
+      transition: background .3s;
+    }
+    nav.scrolled {
+      background: rgba(13,11,8,.97);
+      border-bottom: 1px solid rgba(201,168,76,.15);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .75;
+      transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 8vw 10vh;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('jared-header.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      background-repeat: no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(13,11,8,.92) 40%, rgba(13,11,8,.5) 70%, rgba(13,11,8,.2) 100%),
+        linear-gradient(to top, rgba(13,11,8,.8) 0%, transparent 40%);
+    }
+
+    /* animated grain lines */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          transparent,
+          transparent 3px,
+          rgba(201,168,76,.012) 3px,
+          rgba(201,168,76,.012) 4px
+        );
+      pointer-events: none;
+    }
+
+    /* big ambient glow */
+    .hero-glow {
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 70%);
+      top: -200px; right: -100px;
+      pointer-events: none;
+      animation: pulse 8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: .6; }
+      50%      { transform: scale(1.08); opacity: 1; }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+    .hero-eyebrow {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 12rem);
+      line-height: .92;
+      letter-spacing: .02em;
+      color: var(--cream);
+      text-shadow: 0 0 120px rgba(201,168,76,.25);
+    }
+    .hero-name span {
+      display: block;
+      -webkit-text-stroke: 1px rgba(201,168,76,.4);
+      color: transparent;
+    }
+
+    .hero-tagline {
+      margin-top: 28px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      color: var(--text-dim);
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      margin-top: 44px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--cream);
+      font-weight: 500;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(245,237,216,.25);
+      cursor: pointer;
+      transition: border-color .2s, color .2s, transform .15s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dim);
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      animation: float 2.5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 120px 8vw; }
+    .section-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,.3) 30%, rgba(201,168,76,.3) 70%, transparent);
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--mid);
+      position: relative;
+      overflow: hidden;
+    }
+    #about::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,58,30,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-portrait {
+      position: relative;
+    }
+    .portrait-frame {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--mid) 0%, #241C14 100%);
+      overflow: hidden;
+    }
+    .portrait-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(201,168,76,.12) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .portrait-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 32px;
+      text-align: center;
+    }
+    .portrait-icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(201,168,76,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201,168,76,.2);
+      flex-shrink: 0;
+    }
+    .portrait-icon svg { width: 36px; height: 36px; fill: var(--gold); opacity: .6; }
+    .portrait-label {
+      font-size: .7rem;
+      letter-spacing: .15em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+    .portrait-desc {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: .82rem;
+      color: rgba(201,168,76,.5);
+      line-height: 1.7;
+      max-width: 200px;
+    }
+    .portrait-corner {
+      position: absolute;
+      width: 40px; height: 40px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: .5;
+    }
+    .portrait-corner.tl { top: -8px; left: -8px; border-width: 2px 0 0 2px; }
+    .portrait-corner.br { bottom: -8px; right: -8px; border-width: 0 2px 2px 0; }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(245,237,216,.75);
+      margin-bottom: 20px;
+    }
+    .about-quote {
+      margin: 32px 0;
+      padding: 24px 28px;
+      border-left: 3px solid var(--gold);
+      background: rgba(201,168,76,.05);
+    }
+    .about-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cream) !important;
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+    .about-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-size: .7rem;
+      letter-spacing: .15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .influences {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .influence-tag {
+      padding: 6px 14px;
+      border: 1px solid rgba(201,168,76,.25);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,.04);
+    }
+
+    /* ─── MUSIC ─── */
+    #music {
+      position: relative;
+      background: var(--dark);
+    }
+
+    .music-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
+
+    .track-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 32px;
+      border: 1px solid rgba(201,168,76,.1);
+      background: rgba(201,168,76,.025);
+      margin-bottom: 2px;
+      transition: background .2s, border-color .2s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .track-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform .25s;
+    }
+    .track-card:hover::before { transform: scaleY(1); }
+    .track-card:hover {
+      background: rgba(201,168,76,.06);
+      border-color: rgba(201,168,76,.3);
+    }
+
+    .track-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      width: 28px;
+      text-align: right;
+    }
+
+    .track-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .track-info p {
+      font-size: .75rem;
+      color: var(--text-dim);
+      letter-spacing: .05em;
+    }
+    .track-badge {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 2px 8px;
+      background: rgba(201,168,76,.15);
+      color: var(--gold);
+      font-size: .6rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,168,76,.3);
+      vertical-align: middle;
+    }
+
+    .track-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .track-year {
+      font-size: .7rem;
+      color: var(--text-dim);
+      letter-spacing: .1em;
+    }
+    .track-play {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      transition: background .2s, border-color .2s;
+    }
+    .track-play:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+    .track-play svg { width: 12px; height: 12px; fill: currentColor; margin-left: 2px; }
+
+    .music-platforms {
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .platforms-label {
+      font-size: .65rem;
+      letter-spacing: .3em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .platform-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .platform-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(245,237,216,.12);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .platform-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,76,.05);
+    }
+    .platform-link svg { width: 16px; height: 16px; fill: currentColor; opacity: .8; }
+
+    /* ─── SHOWS ─── */
+    #shows {
+      background: var(--mid);
+      position: relative;
+    }
+
+    .shows-grid { margin-top: 48px; }
+
+    .show-row {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(201,168,76,.1);
+      transition: opacity .2s;
+    }
+    .show-row:first-child { border-top: 1px solid rgba(201,168,76,.1); }
+    .show-row:hover { opacity: .8; }
+
+    .show-date {
+      text-align: center;
+    }
+    .show-date .month {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+    }
+    .show-date .day {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--cream);
+    }
+
+    .show-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .show-info p {
+      font-size: .8rem;
+      color: var(--text-dim);
+    }
+    .show-info .show-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: .7rem;
+      color: var(--gold);
+      letter-spacing: .05em;
+    }
+
+    .show-recurring {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.25);
+      color: var(--gold);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    /* ─── CONNECT ─── */
+    #connect {
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #connect::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .connect-inner { position: relative; max-width: 640px; margin: 0 auto; }
+
+    .connect-inner .section-label {
+      justify-content: center;
+    }
+    .connect-inner .section-label::before { display: none; }
+
+    .connect-inner .section-title { margin-bottom: 12px; }
+
+    .connect-sub {
+      font-size: .95rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border: 1px solid rgba(245,237,216,.15);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: all .2s;
+    }
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,76,.06);
+      transform: translateY(-2px);
+    }
+    .social-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .connect-divider {
+      margin: 40px auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .connect-divider::before,
+    .connect-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,.2);
+    }
+    .connect-divider span {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .booking-box {
+      padding: 40px;
+      border: 1px solid rgba(201,168,76,.2);
+      background: rgba(201,168,76,.03);
+      text-align: left;
+    }
+    .booking-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .booking-box p {
+      font-size: .85rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080705;
+      padding: 40px 8vw;
+      border-top: 1px solid rgba(201,168,76,.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: .15em;
+      color: var(--gold);
+    }
+    .footer-copy {
+      font-size: .7rem;
+      color: var(--text-dim);
+      letter-spacing: .08em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: .7rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: .08em;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      #hero { padding: 0 24px 80px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-portrait { max-width: 280px; margin: 0 auto; }
+      .show-row { grid-template-columns: 80px 1fr; }
+      .show-recurring { display: none; }
+      .music-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-left">
-            <a href="index.html">
-                <img src="logo.png" alt="Jared Walker's Logo" class="nav-logo">
-            </a>
-            <span class="nav-title">Jared Walker</span>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <img src="logo.png" alt="Jared Walker" style="height:36px;filter:invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9);opacity:.9;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Country Music</div>
+      <h1 class="hero-name">
+        Jared
+        <span>Walker</span>
+      </h1>
+      <p class="hero-tagline">
+        High production quality married to lived-in authenticity. Country music that feels real because it is.
+      </p>
+      <div class="hero-ctas">
+        <a href="#music" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2l9 5-9 5V2z" fill="currentColor"/></svg>
+          Listen Now
+        </a>
+        <a href="#shows" class="btn-ghost">Upcoming Shows</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+
+      <div class="about-portrait fade-up">
+        <div class="portrait-frame">
+          <img src="jared-header.jpg" alt="Jared Walker" style="width:100%;height:100%;object-fit:cover;object-position:left center;" />
         </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="booking.html">Booking</a>
-            <a href="contact.html">Contact</a>
-        </div>
-        <div class="hamburger" tabindex="0" role="button" aria-label="Toggle navigation" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-    <header>
-        <a href="booking.html" class="header-cta">Book Jared</a>
-    </header>
-    <section class="bio">
-        <h2>About Jared</h2>
-        <p>Jared is a country rock and traditional country singer/songwriter from Greenville, OH, and the surrounding areas. With influences like Dwight Yoakam, George Strait, and Jason Aldean, he crafts songs that blend gritty twang, heartfelt storytelling, and a touch of modern swagger.</p>
-        <a href="booking.html" class="book-link">Book Jared</a>
-    </section>
-    <section class="music-section">
-        <h2>Latest Tracks</h2>
-        <p>Check out Jared’s latest sound:</p>
-        <audio controls>
-            <source src="Damn Good Friends.m4a" type="audio/mp4">
-            Your browser doesn’t support audio playback.
-        </audio>
-    </section>
-    <section class="gigs">
-        <h2>Live Gigs</h2>
-        <p>Catch Jared every Thursday night from 6-8 PM at El Carreton in Greenville, OH. Bring your boots and enjoy some real country vibes!</p>
-    </section>
-    <footer>
-        <p>© 2025 Jared | Follow: 
-            <span class="social-icons">
-                <a href="https://instagram.com/jcountrymusic98"><i class="fab fa-instagram"></i></a>
-                <a href="https://facebook.com/jcountrymusic"><i class="fab fa-facebook"></i></a>
-                <a href="https://tiktok.com/@jcountry98"><i class="fab fa-tiktok"></i></a>
-            </span>
+        <div class="portrait-corner tl"></div>
+        <div class="portrait-corner br"></div>
+      </div>
+
+      <div class="about-text fade-up">
+        <div class="section-label">The Story</div>
+        <h2 class="section-title">Born for the Music</h2>
+
+        <p>
+          Born in California, raised on the open fields of Ohio — Jared Walker carries both in his music. With a natural presence that commands a room and a voice built for wide-open spaces, he's the kind of performer who walks in looking like he belongs: worn denim, a flannel rolled to the elbows, boots that have seen some miles.
         </p>
-    </footer>
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        <p>
+          His father played in <em>The Dirty River Band</em> — blues, rock, country, all of it. At 17, Jared joined him on stage, picked up acoustic guitar, and found a voice that was unmistakably his own. He gravitated toward the artists who never faked it — Elvis Presley, Dwight Yoakam, George Strait, Willie Nelson. Songwriters who told the truth.
+        </p>
 
-        window.addEventListener('load', () => {
-            navLinks.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-        });
+        <div class="about-quote">
+          <p>"Songwriting is a hundred percent therapy. When you let those emotions flow, that's when the real songs happen."</p>
+          <cite>— Jared Walker</cite>
+        </div>
 
-        hamburger.addEventListener('click', () => {
-            console.log('Hamburger clicked');
-            navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-        });
+        <p>
+          His debut single <strong style="color:var(--cream)">"Down On The River"</strong> is exactly that — an upbeat, 90s-flavored anthem born from summers spent fishing and boating, produced remotely with Tune Designer in Georgia. High production quality married to lived-in authenticity. The Morgan Wallen rule, applied.
+        </p>
 
-        hamburger.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                console.log('Hamburger key pressed');
-                navLinks.classList.toggle('active');
-                hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-            }
-        });
-    </script>
+        <div class="influences">
+          <span class="influence-tag">Elvis Presley</span>
+          <span class="influence-tag">Dwight Yoakam</span>
+          <span class="influence-tag">George Strait</span>
+          <span class="influence-tag">Willie Nelson</span>
+          <span class="influence-tag">Jason Aldean</span>
+          <span class="influence-tag">Morgan Wallen</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="music-header fade-up">
+      <div>
+        <div class="section-label">Discography</div>
+        <h2 class="section-title">The Music</h2>
+      </div>
+    </div>
+
+    <!-- hidden audio element -->
+    <audio id="dgf-audio" src="Damn Good Friends.m4a" preload="none"></audio>
+
+    <div class="fade-up">
+      <div class="track-card" id="dgf-card" onclick="togglePlay()">
+        <span class="track-num">01</span>
+        <div class="track-info">
+          <h3>
+            Damn Good Friends
+            <span class="track-badge">Latest</span>
+          </h3>
+          <p>Jared Walker — Original single</p>
+          <div id="dgf-progress-wrap" style="display:none;margin-top:10px;">
+            <div style="height:2px;background:rgba(201,168,76,.2);border-radius:2px;cursor:pointer;" id="dgf-bar-bg" onclick="seekAudio(event)">
+              <div id="dgf-bar" style="height:100%;width:0%;background:var(--gold);border-radius:2px;transition:width .25s linear;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:5px;">
+              <span id="dgf-cur" style="font-size:.65rem;color:var(--text-dim);">0:00</span>
+              <span id="dgf-dur" style="font-size:.65rem;color:var(--text-dim);">-:--</span>
+            </div>
+          </div>
+        </div>
+        <div class="track-meta">
+          <span class="track-year">2024</span>
+          <div class="track-play" id="dgf-btn">
+            <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-card" onclick="window.open('https://music.apple.com/us/artist/jared-walker/310812008','_blank')">
+        <span class="track-num">02</span>
+        <div class="track-info">
+          <h3>
+            Down On The River
+            <span class="track-badge">Debut Single</span>
+          </h3>
+          <p>feat. Jared Walker — Produced by Tune Designer (Georgia)</p>
+        </div>
+        <div class="track-meta">
+          <span class="track-year">2022</span>
+          <div class="track-play">
+            <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-card" onclick="window.open('https://jaredw.bandcamp.com','_blank')">
+        <span class="track-num">03</span>
+        <div class="track-info">
+          <h3>Snakeroot Escape</h3>
+          <p>Original composition — available on Bandcamp</p>
+        </div>
+        <div class="track-meta">
+          <span class="track-year">2022</span>
+          <div class="track-play">
+            <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="music-platforms fade-up">
+      <p class="platforms-label">Stream &amp; Follow</p>
+      <div class="platform-links">
+        <a class="platform-link" href="https://music.apple.com/us/artist/jared-walker/310812008" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.143 4.043.24 3.34.5 2.077 1.06 1.224 1.978.633 3.26a6.133 6.133 0 0 0-.43 1.564 13.2 13.2 0 0 0-.16 1.836c-.004.055-.007.11-.012.166v12.376c.006.06.013.12.019.181.01.267.033.535.077.8.128.756.402 1.458.84 2.086a4.962 4.962 0 0 0 1.955 1.664c.675.312 1.388.47 2.12.517a27.676 27.676 0 0 0 1.772.08h11.197c.28-.01.56-.02.84-.04.59-.047 1.164-.15 1.72-.36a5.024 5.024 0 0 0 2.99-3.084c.18-.56.27-1.14.3-1.73.01-.175.02-.35.022-.526V6.123zm-7.27 6.273l-4.658 2.647a.627.627 0 0 1-.927-.553V9.009a.627.627 0 0 1 .927-.553l4.657 2.647a.627.627 0 0 1 0 1.106z"/></svg>
+          Apple Music
+        </a>
+        <a class="platform-link" href="https://soundcloud.com/jared-walker-804844901" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M1.175 12.225C.514 12.225 0 12.74 0 13.4v.8c0 .661.514 1.175 1.175 1.175.66 0 1.175-.514 1.175-1.175v-.8c0-.66-.514-1.175-1.175-1.175zm2.81-.6c-.66 0-1.175.514-1.175 1.175v2.4c0 .66.514 1.175 1.175 1.175.66 0 1.175-.515 1.175-1.175v-2.4c0-.661-.514-1.175-1.175-1.175zm2.81-.9c-.66 0-1.175.514-1.175 1.175v3.3c0 .66.514 1.175 1.175 1.175.66 0 1.175-.515 1.175-1.175v-3.3c0-.661-.514-1.175-1.175-1.175zm2.81.3c-.66 0-1.175.514-1.175 1.175v3c0 .66.514 1.175 1.175 1.175.66 0 1.175-.515 1.175-1.175v-3c0-.661-.514-1.175-1.175-1.175zm2.81-.9c-.66 0-1.175.514-1.175 1.175v3.9c0 .66.514 1.175 1.175 1.175.66 0 1.175-.515 1.175-1.175v-3.9c0-.661-.514-1.175-1.175-1.175zm2.81 1.8c-.66 0-1.175.514-1.175 1.175v2.1c0 .66.514 1.175 1.175 1.175.66 0 1.175-.515 1.175-1.175v-2.1c0-.661-.514-1.175-1.175-1.175zm3.545-4.5c-.48-2.7-2.76-4.725-5.505-4.725-1.38 0-2.64.51-3.6 1.35-.18.15-.21.39-.075.57.135.18.375.21.555.075.825-.705 1.89-1.125 3.12-1.125 2.4 0 4.38 1.77 4.77 4.065.03.21.225.36.435.33 1.5-.255 2.76.825 2.76 2.295 0 1.26-.99 2.295-2.25 2.295H18.3a.45.45 0 0 0-.45.45c0 .255.195.45.45.45h1.365c1.77 0 3.135-1.44 3.135-3.195 0-1.71-1.305-3.075-2.985-3.195l-.015-.315z"/></svg>
+          SoundCloud
+        </a>
+        <a class="platform-link" href="https://www.youtube.com/channel/UCg0L0mi4Dtzd-QK_ubFDUPA" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          YouTube
+        </a>
+        <a class="platform-link" href="https://jaredw.bandcamp.com" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>
+          Bandcamp
+        </a>
+        <a class="platform-link" href="https://jcountrymusic.com" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Official Site
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SHOWS -->
+  <section id="shows">
+    <div class="fade-up">
+      <div class="section-label">Live</div>
+      <h2 class="section-title">Catch Him Live</h2>
+    </div>
+
+    <div class="shows-grid fade-up">
+      <div class="show-row">
+        <div class="show-date">
+          <span class="month">Thu</span>
+          <div class="day">WKL</div>
+        </div>
+        <div class="show-info">
+          <h3>El Carreton</h3>
+          <p>Greenville, Ohio</p>
+          <span class="show-time">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+            6:00 PM – 8:00 PM
+          </span>
+        </div>
+        <span class="show-recurring">Every Thursday</span>
+      </div>
+
+      <div class="show-row" style="opacity:.5">
+        <div class="show-date">
+          <span class="month">TBD</span>
+          <div class="day" style="font-size:2rem;line-height:1.2;">More</div>
+        </div>
+        <div class="show-info">
+          <h3>More Dates Coming</h3>
+          <p>Follow on socials for announcements</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-up" style="margin-top:48px;">
+      <a href="#connect" class="btn-ghost">Book For Your Event</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONNECT -->
+  <section id="connect">
+    <div class="connect-inner fade-up">
+      <div class="section-label">Connect</div>
+      <h2 class="section-title">Stay in the Loop</h2>
+      <p class="connect-sub">
+        Follow along for new music drops, show announcements, and a behind-the-scenes look at life on the road.
+      </p>
+
+      <div class="social-links">
+        <a class="social-link" href="https://www.instagram.com/jcountrymusic98" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          @jcountrymusic98
+        </a>
+        <a class="social-link" href="https://www.facebook.com/jcountrymusic" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          @jcountrymusic
+        </a>
+        <a class="social-link" href="https://www.tiktok.com/@jcountry98" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          @jcountry98
+        </a>
+      </div>
+
+      <div class="connect-divider"><span>Booking</span></div>
+
+      <div class="booking-box">
+        <h3>Book Jared for Your Venue</h3>
+        <p>
+          Looking to bring live country music to your bar, venue, or private event? Jared performs regularly across Ohio and is available for bookings. Reach out through the official website.
+        </p>
+        <a href="https://jcountrymusic.com/contact.html" target="_blank" class="btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Jared Walker</div>
+    <div class="footer-copy">© 2026 Jared Walker. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://jcountrymusic.com" target="_blank">Official Site</a>
+      <a href="https://music.apple.com/us/artist/jared-walker/310812008" target="_blank">Apple Music</a>
+      <a href="https://jaredw.bandcamp.com" target="_blank">Bandcamp</a>
+    </div>
+  </footer>
+
+  <script>
+    // Audio player
+    const audio = document.getElementById('dgf-audio');
+    const btn   = document.getElementById('dgf-btn');
+    const bar   = document.getElementById('dgf-bar');
+    const cur   = document.getElementById('dgf-cur');
+    const dur   = document.getElementById('dgf-dur');
+    const wrap  = document.getElementById('dgf-progress-wrap');
+    const pauseIcon = `<svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/></svg>`;
+    const playIcon  = `<svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5V1z"/></svg>`;
+
+    function fmt(s) {
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return `${m}:${sec.toString().padStart(2,'0')}`;
+    }
+    function togglePlay(e) {
+      if (e) e.stopPropagation();
+      if (audio.paused) { audio.play(); } else { audio.pause(); }
+    }
+    function seekAudio(e) {
+      e.stopPropagation();
+      const rect = e.currentTarget.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+    }
+    audio.addEventListener('play',  () => { btn.innerHTML = pauseIcon; wrap.style.display = 'block'; });
+    audio.addEventListener('pause', () => { btn.innerHTML = playIcon; });
+    audio.addEventListener('ended', () => { btn.innerHTML = playIcon; bar.style.width = '0%'; cur.textContent = '0:00'; });
+    audio.addEventListener('loadedmetadata', () => { dur.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      cur.textContent = fmt(audio.currentTime);
+    });
+
+    // Nav scroll class
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Intersection observer for fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
 </body>
 </html>
