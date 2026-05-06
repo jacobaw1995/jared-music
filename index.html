@@ -406,6 +406,81 @@
       background: rgba(201,168,76,.04);
     }
 
+    /* ─── NEW RELEASE CARD ─── */
+    .new-release-card {
+      margin-bottom: 32px;
+      padding: 32px;
+      border: 1px solid rgba(201,168,76,.4);
+      background: linear-gradient(135deg, rgba(201,168,76,.08) 0%, rgba(201,168,76,.03) 100%);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, background .2s;
+    }
+    .new-release-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .new-release-card:hover { border-color: var(--gold); background: linear-gradient(135deg, rgba(201,168,76,.13) 0%, rgba(201,168,76,.05) 100%); }
+    .new-release-badge {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .new-release-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+    .new-release-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .new-release-text h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      letter-spacing: .06em;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .new-release-text p {
+      font-size: .8rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .new-release-platforms {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .new-release-platforms span {
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 3px 10px;
+      border: 1px solid rgba(201,168,76,.25);
+      background: rgba(201,168,76,.06);
+    }
+
     /* ─── MUSIC ─── */
     #music {
       position: relative;
@@ -871,7 +946,7 @@
         High production quality married to lived-in authenticity.<br>Country music that feels real because it is.
       </p>
       <div class="hero-ctas">
-        <a href="#music" class="btn-primary">
+        <a href="runnin.html" class="btn-primary">
           <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor"><path d="M3 2l9 5-9 5V2z"/></svg>
           Listen Now
         </a>
@@ -936,18 +1011,54 @@
       <h2 class="section-title">The Music</h2>
     </div>
 
+    <!-- NEW RELEASE FEATURE CARD -->
+    <div class="new-release-card fade-up" onclick="window.location.href='runnin.html'">
+      <div class="new-release-badge">New Release — May 3, 2026</div>
+      <div class="new-release-body">
+        <div class="new-release-text">
+          <h3>Runnin'</h3>
+          <p>Available now on all platforms</p>
+          <div class="new-release-platforms">
+            <span>Apple Music</span>
+            <span>Spotify</span>
+            <span>Amazon Music</span>
+            <span>YouTube</span>
+          </div>
+        </div>
+        <a href="runnin.html" class="btn-primary" onclick="event.stopPropagation()">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor"><path d="M3 2l9 5-9 5V2z"/></svg>
+          Listen Now
+        </a>
+      </div>
+    </div>
+
     <audio id="dgf-audio" src="Damn Good Friends.m4a" preload="none"></audio>
 
     <div class="fade-up">
 
-      <!-- Track 1: Damn Good Friends (playable) -->
-      <div class="track-card" id="dgf-card" onclick="togglePlay()">
+      <!-- Track 1: Runnin' -->
+      <div class="track-card" onclick="window.location.href='runnin.html'">
         <span class="track-num">01</span>
         <div class="track-info">
           <h3>
-            Damn Good Friends
-            <span class="track-badge">Latest</span>
+            Runnin'
+            <span class="track-badge">New</span>
           </h3>
+          <p>Jared Walker — Available on all platforms</p>
+        </div>
+        <div class="track-meta">
+          <span class="track-year">2026</span>
+          <div class="track-play">
+            <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track 2: Damn Good Friends (playable) -->
+      <div class="track-card" id="dgf-card" onclick="togglePlay()">
+        <span class="track-num">02</span>
+        <div class="track-info">
+          <h3>Damn Good Friends</h3>
           <p>Jared Walker — Original single</p>
           <div id="dgf-progress-wrap">
             <div class="progress-track" id="dgf-bar-bg" onclick="seekAudio(event)">
@@ -967,9 +1078,9 @@
         </div>
       </div>
 
-      <!-- Track 2: Down On The River -->
+      <!-- Track 3: Down On The River -->
       <div class="track-card" onclick="window.open('https://music.apple.com/us/artist/jared-walker/310812008','_blank')">
-        <span class="track-num">02</span>
+        <span class="track-num">03</span>
         <div class="track-info">
           <h3>
             Down On The River
