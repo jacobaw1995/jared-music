@@ -373,17 +373,46 @@
     .btn-copy.copied { color: #52B788; border-color: #52B788; }
     .btn-copy svg { width: 12px; height: 12px; fill: currentColor; }
 
-    /* ─── PHOTOS PLACEHOLDER ─── */
-    .photos-placeholder {
-      padding: 60px 40px;
-      border: 1px dashed rgba(201,168,76,.2);
-      text-align: center;
+    /* ─── PHOTOS ─── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
-    .photos-placeholder-icon { font-size: 2.4rem; margin-bottom: 14px; opacity: .4; }
-    .photos-placeholder p {
-      font-size: .83rem;
+    .photo-card {
+      border: 1px solid rgba(201,168,76,.12);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .photo-card:hover { border-color: rgba(201,168,76,.35); }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo-card-body {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(201,168,76,.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .photo-card-meta { flex: 1; min-width: 0; }
+    .photo-card-name {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .photo-card-spec {
+      font-size: .68rem;
       color: var(--text-dim);
-      line-height: 1.7;
     }
 
     /* ─── CONTACT BAR ─── */
@@ -671,9 +700,78 @@
       <div class="kit-section-title">Photos</div>
       <p class="kit-section-desc">High-resolution press photos for editorial and promotional use.</p>
 
-      <div class="photos-placeholder">
-        <div class="photos-placeholder-icon">📷</div>
-        <p>Press photos coming soon.<br>Contact <strong style="color:var(--cream)">info@jcountrymusic.com</strong> to request photos in the meantime.</p>
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <img src="assets/photos/Jared Live Performance.png" alt="Jared Walker — Live Performance" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Live Performance</div>
+              <div class="photo-card-spec">3000 × 2000 · PNG</div>
+            </div>
+            <a href="assets/photos/Jared Live Performance.png" download="JaredWalker-LivePerformance.png" class="btn-download" style="width:auto;padding:9px 16px;">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download
+            </a>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/photos/Jared Live Performances_Photos.webp" alt="Jared Walker — Live" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Live — Crowd Shot</div>
+              <div class="photo-card-spec">3000 × 2000 · WebP</div>
+            </div>
+            <a href="assets/photos/Jared Live Performances_Photos.webp" download="JaredWalker-Live-CrowdShot.webp" class="btn-download" style="width:auto;padding:9px 16px;">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download
+            </a>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/photos/Jared Mid Performance.webp" alt="Jared Walker — Mid Performance" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Mid Performance</div>
+              <div class="photo-card-spec">3000 × 2000 · WebP</div>
+            </div>
+            <a href="assets/photos/Jared Mid Performance.webp" download="JaredWalker-MidPerformance.webp" class="btn-download" style="width:auto;padding:9px 16px;">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download
+            </a>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/photos/Jared Playing Solo.webp" alt="Jared Walker — Playing Solo" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Playing Solo</div>
+              <div class="photo-card-spec">3000 × 2000 · WebP</div>
+            </div>
+            <a href="assets/photos/Jared Playing Solo.webp" download="JaredWalker-PlayingSolo.webp" class="btn-download" style="width:auto;padding:9px 16px;">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download
+            </a>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/photos/Jared with Britches Down.webp" alt="Jared Walker — Stage" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Stage Shot</div>
+              <div class="photo-card-spec">3000 × 2000 · WebP</div>
+            </div>
+            <a href="assets/photos/Jared with Britches Down.webp" download="JaredWalker-StageShot.webp" class="btn-download" style="width:auto;padding:9px 16px;">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 
