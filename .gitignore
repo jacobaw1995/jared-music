@@ -2,3 +2,4 @@ masters/
 .DS_Store
 .preview/
 _to_delete/
+**/.DS_Store
