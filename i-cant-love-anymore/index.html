@@ -384,10 +384,10 @@
        An empty string renders that button greyed out as "Aug 31".
        ════════════════════════════════════════════════════════════════ */
     const LINKS = {
-      apple:   "",
+      apple:   "https://music.apple.com/us/artist/jared-walker/310812008",
       spotify: "",
       amazon:  "",
-      youtube: ""
+      youtube: "https://www.youtube.com/@JaredWalkerMusic"
     };
 
     const RELEASE_DATE = new Date('2026-08-31T00:00:00-04:00');
@@ -401,15 +401,13 @@
 
     const ARROW = '<svg class="p-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>';
 
-    document.getElementById('platforms').innerHTML = Object.entries(ICONS).map(([key, [cls, name, path]]) => {
-      const url = LINKS[key];
-      const tail = url ? ARROW : '<span class="p-soon">Aug 31</span>';
-      return `<a class="platform-btn${url ? '' : ' pending'}"${url ? ` href="${url}" target="_blank" rel="noopener"` : ''}>
+    document.getElementById('platforms').innerHTML = Object.entries(ICONS)
+      .filter(([key]) => LINKS[key])
+      .map(([key, [cls, name, path]]) => `<a class="platform-btn" href="${LINKS[key]}" target="_blank" rel="noopener">
           <div class="p-icon ${cls}"><svg viewBox="0 0 24 24">${path}</svg></div>
           <span class="p-name">${name}</span>
-          ${tail}
-        </a>`;
-    }).join('');
+          ${ARROW}
+        </a>`).join('');
 
     // Flip the page to "Out Now" on release day without another deploy
     if (Date.now() >= RELEASE_DATE.getTime()) {
