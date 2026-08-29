@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jared Walker — Country Music</title>
+  <meta name="description" content="Traditional country from Ohio. New single &quot;I Can't Love Anymore&quot; out August 31, 2026. Stream it, catch a show, book Jared for your venue." />
+  <link rel="canonical" href="https://jcountrymusic.com/" />
+  <link rel="icon" href="/assets/logos/jw-monogram.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jcountrymusic.com/" />
+  <meta property="og:title" content="Jared Walker — Country Music" />
+  <meta property="og:description" content="New single &quot;I Can't Love Anymore&quot; — out August 31, 2026." />
+  <meta property="og:image" content="https://jcountrymusic.com/assets/og/i-cant-love-anymore-og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -131,9 +140,9 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('jared-header.jpg');
+      background-image: url('/assets/photos/jared-hero-2026.jpg');
       background-size: cover;
-      background-position: center 20%;
+      background-position: center 31%;
       background-repeat: no-repeat;
     }
     .hero-bg::after {
@@ -193,9 +202,10 @@
 
     .hero-logo-img {
       display: block;
-      max-width: min(560px, 70vw);
+      max-width: min(520px, 72vw);
       width: 100%;
       margin-bottom: 28px;
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,.75));
     }
 
     .hero-tagline {
@@ -448,13 +458,21 @@
     .new-release-body {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
       flex-wrap: wrap;
     }
+    .new-release-art {
+      width: 160px; height: 160px;
+      flex-shrink: 0;
+      border: 1px solid rgba(201,168,76,.3);
+      box-shadow: 0 18px 44px rgba(0,0,0,.55);
+      display: block;
+    }
+    .new-release-text { flex: 1 1 240px; }
+    .new-release-cta { flex-shrink: 0; }
     .new-release-text h3 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
       letter-spacing: .06em;
       color: var(--cream);
       line-height: 1;
@@ -575,14 +593,16 @@
     .track-play svg { width: 12px; height: 12px; fill: currentColor; margin-left: 2px; }
 
     /* audio progress */
-    #dgf-progress-wrap { display: none; margin-top: 10px; }
+    .track-progress { display: none; margin-top: 10px; }
+    .track-card.playing .track-progress,
+    .track-card.loaded  .track-progress { display: block; }
     .progress-track {
       height: 2px;
       background: rgba(201,168,76,.2);
       border-radius: 2px;
       cursor: pointer;
     }
-    #dgf-bar {
+    .track-progress .bar {
       height: 100%; width: 0%;
       background: var(--gold);
       border-radius: 2px;
@@ -861,7 +881,9 @@
 
       /* hero */
       #hero { padding: 0 20px 80px; align-items: flex-end; }
-      .hero-bg { background-position: 70% 20%; }
+      .hero-bg { background-position: center 28%; }
+      .new-release-art { width: 128px; height: 128px; }
+      .new-release-body { gap: 20px; }
       .hero-bg::after {
         background:
           linear-gradient(to bottom, rgba(13,11,8,.4) 0%, rgba(13,11,8,.75) 50%, rgba(13,11,8,.95) 100%);
@@ -908,14 +930,14 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#hero" class="nav-logo">
-      <img src="jw_monogram.png" alt="Jared Walker" />
+      <img src="/assets/logos/jw-monogram.png" alt="Jared Walker" />
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#music">Music</a></li>
       <li><a href="#shows">Shows</a></li>
       <li><a href="#connect">Connect</a></li>
-      <li><a href="press.html">Press</a></li>
+      <li><a href="/press/">Press</a></li>
     </ul>
     <button class="nav-burger" id="nav-burger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -928,7 +950,7 @@
     <a href="#music"   onclick="closeDrawer()">Music</a>
     <a href="#shows"   onclick="closeDrawer()">Shows</a>
     <a href="#connect" onclick="closeDrawer()">Connect</a>
-    <a href="press.html" onclick="closeDrawer()">Press</a>
+    <a href="/press/" onclick="closeDrawer()">Press</a>
   </div>
 
   <!-- HERO -->
@@ -940,7 +962,7 @@
     <div class="hero-content">
       <div class="hero-eyebrow">Country Music</div>
       <img
-        src="Jared Walker Logo Stacked.png"
+        src="/assets/logos/Jared%20Walker%20_white.png"
         alt="Jared Walker"
         class="hero-logo-img"
       />
@@ -948,9 +970,9 @@
         High production quality married to lived-in authenticity.<br>Country music that feels real because it is.
       </p>
       <div class="hero-ctas">
-        <a href="runnin.html" class="btn-primary">
+        <a href="/i-cant-love-anymore/" class="btn-primary">
           <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor"><path d="M3 2l9 5-9 5V2z"/></svg>
-          Listen Now
+          Hear the New Single
         </a>
         <a href="#shows" class="btn-ghost">Upcoming Shows</a>
       </div>
@@ -965,7 +987,7 @@
 
       <div class="about-portrait fade-up">
         <div class="portrait-frame">
-          <img src="jared-about.jpg" alt="Jared Walker performing" />
+          <img src="/assets/photos/jared-about.jpg" alt="Jared Walker performing" />
         </div>
         <div class="portrait-corner tl"></div>
         <div class="portrait-corner br"></div>
@@ -988,7 +1010,7 @@
         </div>
 
         <p>
-          His debut single <strong style="color:var(--cream)">"Down On The River"</strong> is exactly that — an upbeat, 90s-flavored anthem born from summers spent fishing and boating. The Morgan Wallen rule, applied.
+          His new single <strong style="color:var(--cream)">"I Can't Love Anymore"</strong> is exactly that — the sound of a man who gave everything he had and came up empty. It follows <strong style="color:var(--cream)">"Runnin'"</strong> and his debut <strong style="color:var(--cream)">"Down On The River"</strong>, the upbeat 90s-flavored anthem born from summers spent fishing and boating.
         </p>
 
         <div class="influences">
@@ -1014,12 +1036,15 @@
     </div>
 
     <!-- NEW RELEASE FEATURE CARD -->
-    <div class="new-release-card fade-up" onclick="window.location.href='runnin.html'">
-      <div class="new-release-badge">New Release — May 3, 2026</div>
+    <div class="new-release-card fade-up" onclick="window.location.href='/i-cant-love-anymore/'">
+      <div class="new-release-badge">New Single — August 31, 2026</div>
       <div class="new-release-body">
+        <img class="new-release-art"
+             src="/assets/covers/i-cant-love-anymore-700.jpg"
+             alt="I Can't Love Anymore — Jared Walker" />
         <div class="new-release-text">
-          <h3>Runnin'</h3>
-          <p>Available now on all platforms</p>
+          <h3>I Can't Love Anymore</h3>
+          <p>Listen on the site now — everywhere else August 31</p>
           <div class="new-release-platforms">
             <span>Apple Music</span>
             <span>Spotify</span>
@@ -1027,25 +1052,47 @@
             <span>YouTube</span>
           </div>
         </div>
-        <a href="runnin.html" class="btn-primary" onclick="event.stopPropagation()">
+        <a href="/i-cant-love-anymore/" class="btn-primary new-release-cta" onclick="event.stopPropagation()">
           <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor"><path d="M3 2l9 5-9 5V2z"/></svg>
           Listen Now
         </a>
       </div>
     </div>
 
-    <audio id="dgf-audio" src="Damn Good Friends.m4a" preload="none"></audio>
+    <audio id="site-audio" preload="none"></audio>
 
     <div class="fade-up">
 
-      <!-- Track 1: Runnin' -->
-      <div class="track-card" onclick="window.location.href='runnin.html'">
+      <!-- 01 — I Can't Love Anymore (playable) -->
+      <div class="track-card" data-audio="/assets/audio/i-cant-love-anymore.mp3">
         <span class="track-num">01</span>
         <div class="track-info">
           <h3>
-            Runnin'
+            I Can't Love Anymore
             <span class="track-badge">New</span>
           </h3>
+          <p>Jared Walker — Out everywhere August 31, 2026</p>
+          <div class="track-progress">
+            <div class="progress-track"><div class="bar"></div></div>
+            <div class="progress-times">
+              <span class="cur">0:00</span>
+              <span class="dur">-:--</span>
+            </div>
+          </div>
+        </div>
+        <div class="track-meta">
+          <span class="track-year">2026</span>
+          <div class="track-play">
+            <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 — Runnin' -->
+      <div class="track-card" onclick="window.location.href='/runnin/'">
+        <span class="track-num">02</span>
+        <div class="track-info">
+          <h3>Runnin'</h3>
           <p>Jared Walker — Available on all platforms</p>
         </div>
         <div class="track-meta">
@@ -1056,33 +1103,31 @@
         </div>
       </div>
 
-      <!-- Track 2: Damn Good Friends (playable) -->
-      <div class="track-card" id="dgf-card" onclick="togglePlay()">
-        <span class="track-num">02</span>
+      <!-- 03 — Damn Good Friends (playable) -->
+      <div class="track-card" data-audio="/assets/audio/damn-good-friends.m4a">
+        <span class="track-num">03</span>
         <div class="track-info">
           <h3>Damn Good Friends</h3>
           <p>Jared Walker — Original single</p>
-          <div id="dgf-progress-wrap">
-            <div class="progress-track" id="dgf-bar-bg" onclick="seekAudio(event)">
-              <div id="dgf-bar"></div>
-            </div>
+          <div class="track-progress">
+            <div class="progress-track"><div class="bar"></div></div>
             <div class="progress-times">
-              <span id="dgf-cur">0:00</span>
-              <span id="dgf-dur">-:--</span>
+              <span class="cur">0:00</span>
+              <span class="dur">-:--</span>
             </div>
           </div>
         </div>
         <div class="track-meta">
           <span class="track-year">2024</span>
-          <div class="track-play" id="dgf-btn">
+          <div class="track-play">
             <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
           </div>
         </div>
       </div>
 
-      <!-- Track 3: Down On The River -->
+      <!-- 04 — Down On The River -->
       <div class="track-card" onclick="window.open('https://music.apple.com/us/artist/jared-walker/310812008','_blank')">
-        <span class="track-num">03</span>
+        <span class="track-num">04</span>
         <div class="track-info">
           <h3>
             Down On The River
@@ -1151,7 +1196,7 @@
     </div>
 
     <div class="bandsintown-cta fade-up">
-      <a href="https://jcountrymusic.com/contact.html" target="_blank" class="btn-ghost">Book For Your Event</a>
+      <a href="/contact/" target="_blank" class="btn-ghost">Book For Your Event</a>
     </div>
   </section>
 
@@ -1197,7 +1242,7 @@
         <p>
           Looking to bring live country music to your bar, venue, or private event? Jared performs regularly across Ohio and is available for bookings.
         </p>
-        <a href="https://jcountrymusic.com/contact.html" target="_blank" class="btn-primary">Get in Touch</a>
+        <a href="/contact/" target="_blank" class="btn-primary">Get in Touch</a>
       </div>
     </div>
   </section>
@@ -1205,7 +1250,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
-      <img src="jw_monogram.png" alt="Jared Walker" />
+      <img src="/assets/logos/jw-monogram.png" alt="Jared Walker" />
     </div>
     <div class="footer-copy">© 2026 Jared Walker. All rights reserved.</div>
     <div class="footer-links">
@@ -1230,37 +1275,61 @@
       document.body.style.overflow = '';
     }
 
-    // ── Audio player ──
-    const audio = document.getElementById('dgf-audio');
-    const btn   = document.getElementById('dgf-btn');
-    const bar   = document.getElementById('dgf-bar');
-    const cur   = document.getElementById('dgf-cur');
-    const dur   = document.getElementById('dgf-dur');
-    const wrap  = document.getElementById('dgf-progress-wrap');
-    const PAUSE = `<svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/></svg>`;
-    const PLAY  = `<svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5V1z"/></svg>`;
+    // ── Audio player (one shared element, many track cards) ──
+    const audio  = document.getElementById('site-audio');
+    const PAUSE  = `<svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/></svg>`;
+    const PLAY   = `<svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5V1z"/></svg>`;
+    let current = null;
 
-    function fmt(s) {
-      const m = Math.floor(s/60), sec = Math.floor(s%60);
-      return `${m}:${sec.toString().padStart(2,'0')}`;
-    }
-    function togglePlay() {
-      audio.paused ? audio.play() : audio.pause();
-    }
-    function seekAudio(e) {
-      e.stopPropagation();
-      const r = e.currentTarget.getBoundingClientRect();
-      audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
-    }
-    audio.addEventListener('play',  () => { btn.innerHTML = PAUSE; wrap.style.display = 'block'; });
-    audio.addEventListener('pause', () => { btn.innerHTML = PLAY; });
-    audio.addEventListener('ended', () => { btn.innerHTML = PLAY; bar.style.width = '0%'; cur.textContent = '0:00'; });
-    audio.addEventListener('loadedmetadata', () => { dur.textContent = fmt(audio.duration); });
-    audio.addEventListener('timeupdate', () => {
-      if (!audio.duration) return;
-      bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
-      cur.textContent = fmt(audio.currentTime);
+    const fmt = s => {
+      if (!isFinite(s)) return '-:--';
+      const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+      return `${m}:${sec.toString().padStart(2, '0')}`;
+    };
+
+    document.querySelectorAll('.track-card[data-audio]').forEach(card => {
+      const btn = card.querySelector('.track-play');
+
+      card.addEventListener('click', () => {
+        if (current === card) {
+          audio.paused ? audio.play() : audio.pause();
+          return;
+        }
+        if (current) {
+          current.classList.remove('playing', 'loaded');
+          current.querySelector('.track-play').innerHTML = PLAY;
+          current.querySelector('.bar').style.width = '0%';
+          current.querySelector('.cur').textContent = '0:00';
+        }
+        current = card;
+        card.classList.add('loaded');
+        audio.src = card.dataset.audio;
+        audio.play();
+      });
+
+      // seeking, without re-triggering the card's play/pause
+      card.querySelector('.progress-track').addEventListener('click', e => {
+        e.stopPropagation();
+        if (current !== card || !audio.duration) return;
+        const r = e.currentTarget.getBoundingClientRect();
+        audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+      });
     });
+
+    const paint = fn => { if (current) fn(current); };
+    audio.addEventListener('play',  () => paint(c => { c.classList.add('playing'); c.querySelector('.track-play').innerHTML = PAUSE; }));
+    audio.addEventListener('pause', () => paint(c => c.querySelector('.track-play').innerHTML = PLAY));
+    audio.addEventListener('ended', () => paint(c => {
+      c.querySelector('.track-play').innerHTML = PLAY;
+      c.querySelector('.bar').style.width = '0%';
+      c.querySelector('.cur').textContent = '0:00';
+    }));
+    audio.addEventListener('loadedmetadata', () => paint(c => c.querySelector('.dur').textContent = fmt(audio.duration)));
+    audio.addEventListener('timeupdate', () => paint(c => {
+      if (!audio.duration) return;
+      c.querySelector('.bar').style.width = (audio.currentTime / audio.duration * 100) + '%';
+      c.querySelector('.cur').textContent = fmt(audio.currentTime);
+    }));
 
     // ── Scrolled nav ──
     const nav = document.getElementById('nav');

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Can't Love Anymore — Jared Walker</title>
+  <meta property="og:title" content="I Can't Love Anymore — Jared Walker" />
+  <meta property="og:description" content="Out now on Apple Music, Spotify, Amazon Music & YouTube." />
+  <meta property="og:image" content="https://jcountrymusic.com/assets/og/i-cant-love-anymore-og.jpg" />
+  <link rel="canonical" href="https://jcountrymusic.com/i-cant-love-anymore/" />
+  <meta property="og:url" content="https://jcountrymusic.com/i-cant-love-anymore/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/logos/jw-monogram.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #C9A84C;
+      --gold-lt: #E8C96A;
+      --cream:   #F5EDD8;
+      --dark:    #0D0B08;
+      --mid:     #1A1510;
+      --dim:     #8A7A60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* noise */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .35;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: linear-gradient(to bottom, rgba(13,11,8,.95) 0%, transparent 100%);
+    }
+    nav.scrolled {
+      background: rgba(13,11,8,.97);
+      border-bottom: 1px solid rgba(201,168,76,.15);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo img { height: 34px; filter: invert(1) sepia(1) brightness(1.35) saturate(1.2); opacity: .9; }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--dim);
+      text-decoration: none;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* ── BG ── */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      background-image: url('/assets/covers/i-cant-love-anymore-1400.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(38px) saturate(1.1);
+      transform: scale(1.12);
+      z-index: -1;
+    }
+    .page-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(13,11,8,.85) 0%,
+        rgba(13,11,8,.7) 30%,
+        rgba(13,11,8,.88) 70%,
+        rgba(13,11,8,.98) 100%
+      );
+    }
+
+    /* ── MAIN ── */
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .release-wrap {
+      text-align: center;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .release-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .release-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+    .release-artist {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 12px;
+    }
+
+    .release-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 20vw, 10rem);
+      letter-spacing: .04em;
+      line-height: .9;
+      color: var(--cream);
+      text-shadow: 0 0 80px rgba(201,168,76,.2);
+      margin-bottom: 8px;
+    }
+
+    .release-date {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--dim);
+      margin-bottom: 56px;
+    }
+
+    /* divider */
+    .release-divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(201,168,76,.4);
+      margin: 0 auto 56px;
+    }
+
+    /* platform buttons */
+    .platforms {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .platform-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 28px;
+      text-decoration: none;
+      border: 1px solid rgba(245,237,216,.12);
+      background: rgba(13,11,8,.6);
+      color: var(--cream);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      transition: all .2s;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .platform-btn:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,.08);
+      color: var(--cream);
+      transform: translateX(4px);
+    }
+    .platform-btn .p-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .platform-btn .p-icon svg { width: 18px; height: 18px; fill: #fff; }
+    .platform-btn .p-name { flex: 1; text-align: left; }
+    .platform-btn .p-arrow {
+      width: 16px; height: 16px;
+      fill: var(--dim);
+      transition: fill .2s, transform .2s;
+      flex-shrink: 0;
+    }
+    .platform-btn:hover .p-arrow { fill: var(--gold); transform: translateX(3px); }
+
+    /* platform icon colors */
+    .p-apple  { background: #000; }
+    .p-spotify { background: #1DB954; }
+    .p-amazon { background: #FF9900; }
+    .p-youtube { background: #FF0000; }
+
+    /* back link bottom */
+    .back-bottom {
+      margin-top: 56px;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .back-bottom a {
+      color: var(--dim);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .back-bottom a:hover { color: var(--gold); }
+    .back-bottom svg { width: 12px; height: 12px; fill: currentColor; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .release-title { font-size: clamp(4rem, 22vw, 7rem); }
+      .platform-btn { padding: 16px 20px; }
+    }
+  
+    /* long title needs a smaller scale than "Runnin'" */
+    .release-title {
+      font-size: clamp(2.8rem, 9vw, 5.6rem);
+      line-height: .95;
+    }
+
+    /* ─── COVER ART ─── */
+    .release-art {
+      width: min(340px, 72vw);
+      aspect-ratio: 1;
+      margin: 0 auto 36px;
+      display: block;
+      border: 1px solid rgba(201,168,76,.28);
+      box-shadow: 0 30px 70px rgba(0,0,0,.65);
+    }
+
+    /* ─── ON-SITE PLAYER ─── */
+    .player {
+      max-width: 440px;
+      margin: 0 auto 44px;
+      padding: 20px 24px;
+      border: 1px solid rgba(201,168,76,.28);
+      background: rgba(13,11,8,.62);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .player-row { display: flex; align-items: center; gap: 16px; }
+    .player-btn {
+      width: 48px; height: 48px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: rgba(201,168,76,.1);
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .player-btn:hover { background: var(--gold); color: var(--dark); }
+    .player-btn svg { width: 15px; height: 15px; fill: currentColor; }
+    .player-btn.is-play svg { margin-left: 3px; }
+    .player-meta { flex: 1; min-width: 0; text-align: left; }
+    .player-label {
+      font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 8px;
+    }
+    .player-track { height: 3px; background: rgba(201,168,76,.2); cursor: pointer; }
+    .player-bar { height: 100%; width: 0%; background: var(--gold); transition: width .25s linear; }
+    .player-times { display: flex; justify-content: space-between; margin-top: 6px; }
+    .player-times span { font-size: .63rem; color: var(--dim); }
+
+    .platforms-label {
+      font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 16px;
+    }
+
+    /* pending platform button (link not live yet) */
+    .platform-btn.pending { opacity: .5; cursor: default; pointer-events: none; }
+    .platform-btn.pending:hover { transform: none; border-color: rgba(245,237,216,.12); background: rgba(13,11,8,.6); }
+    .p-soon {
+      font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dim); flex-shrink: 0;
+    }
+</style>
+</head>
+<body>
+
+  <div class="page-bg"></div>
+
+  <nav id="nav">
+    <a href="/" class="nav-logo">
+      <img src="/assets/logos/jw-monogram.png" alt="Jared Walker" />
+    </a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      Back to Site
+    </a>
+  </nav>
+
+  <main>
+    <div class="release-wrap">
+
+      <div class="release-eyebrow" id="eyebrow">Out August 31</div>
+
+      <img class="release-art"
+           src="/assets/covers/i-cant-love-anymore-1400.jpg"
+           alt="I Can't Love Anymore — Jared Walker" />
+
+      <p class="release-artist">Jared Walker</p>
+      <h1 class="release-title">I Can't Love Anymore</h1>
+      <p class="release-date" id="release-date">Releases August 31, 2026</p>
+
+      <div class="release-divider"></div>
+
+      <!-- ── LISTEN HERE ── -->
+      <div class="player">
+        <div class="player-row">
+          <div class="player-btn is-play" id="play-btn" role="button" tabindex="0" aria-label="Play I Can't Love Anymore">
+            <svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+          </div>
+          <div class="player-meta">
+            <div class="player-label">Listen Here</div>
+            <div class="player-track" id="seek"><div class="player-bar" id="bar"></div></div>
+            <div class="player-times"><span id="cur">0:00</span><span id="dur">4:22</span></div>
+          </div>
+        </div>
+      </div>
+      <audio id="audio" src="/assets/audio/i-cant-love-anymore.mp3" preload="metadata"></audio>
+
+      <p class="platforms-label">Also On</p>
+      <div class="platforms" id="platforms"></div>
+
+      <div class="back-bottom">
+        <a href="/">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          Back to jcountrymusic.com
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    /* ════════════════════════════════════════════════════════════════
+       STREAMING LINKS — paste the album URLs here once they go live.
+       An empty string renders that button greyed out as "Aug 31".
+       ════════════════════════════════════════════════════════════════ */
+    const LINKS = {
+      apple:   "",
+      spotify: "",
+      amazon:  "",
+      youtube: ""
+    };
+
+    const RELEASE_DATE = new Date('2026-08-31T00:00:00-04:00');
+
+    const ICONS = {
+      apple:   ['p-apple',  'Apple Music',  '<path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.143 4.043.24 3.34.5 2.077 1.06 1.224 1.978.633 3.26a6.133 6.133 0 0 0-.43 1.564 13.2 13.2 0 0 0-.16 1.836c-.004.055-.007.11-.012.166v12.376c.006.06.013.12.019.181.01.267.033.535.077.8.128.756.402 1.458.84 2.086a4.962 4.962 0 0 0 1.955 1.664c.675.312 1.388.47 2.12.517a27.676 27.676 0 0 0 1.772.08h11.197c.28-.01.56-.02.84-.04.59-.047 1.164-.15 1.72-.36a5.024 5.024 0 0 0 2.99-3.084c.18-.56.27-1.14.3-1.73.01-.175.02-.35.022-.526V6.123zm-7.27 6.273l-4.658 2.647a.627.627 0 0 1-.927-.553V9.009a.627.627 0 0 1 .927-.553l4.657 2.647a.627.627 0 0 1 0 1.106z"/>'],
+      spotify: ['p-spotify','Spotify',      '<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>'],
+      amazon:  ['p-amazon', 'Amazon Music', '<path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.699-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.047-.872-1.234-1.276-1.814-2.106-1.734 1.768-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.247.631-.01.845l-2.39 2.098z"/>'],
+      youtube: ['p-youtube','YouTube',      '<path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>']
+    };
+
+    const ARROW = '<svg class="p-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>';
+
+    document.getElementById('platforms').innerHTML = Object.entries(ICONS).map(([key, [cls, name, path]]) => {
+      const url = LINKS[key];
+      const tail = url ? ARROW : '<span class="p-soon">Aug 31</span>';
+      return `<a class="platform-btn${url ? '' : ' pending'}"${url ? ` href="${url}" target="_blank" rel="noopener"` : ''}>
+          <div class="p-icon ${cls}"><svg viewBox="0 0 24 24">${path}</svg></div>
+          <span class="p-name">${name}</span>
+          ${tail}
+        </a>`;
+    }).join('');
+
+    // Flip the page to "Out Now" on release day without another deploy
+    if (Date.now() >= RELEASE_DATE.getTime()) {
+      document.getElementById('eyebrow').textContent = 'Out Now';
+      document.getElementById('release-date').textContent = 'Released August 31, 2026';
+    }
+
+    // ── Player ──
+    const audio = document.getElementById('audio');
+    const btn   = document.getElementById('play-btn');
+    const bar   = document.getElementById('bar');
+    const PAUSE = '<svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/></svg>';
+    const PLAY  = '<svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5V1z"/></svg>';
+    const fmt = s => isFinite(s) ? `${Math.floor(s/60)}:${Math.floor(s%60).toString().padStart(2,'0')}` : '-:--';
+
+    const toggle = () => audio.paused ? audio.play() : audio.pause();
+    btn.addEventListener('click', toggle);
+    btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+
+    audio.addEventListener('play',  () => { btn.innerHTML = PAUSE; btn.classList.remove('is-play'); });
+    audio.addEventListener('pause', () => { btn.innerHTML = PLAY;  btn.classList.add('is-play'); });
+    audio.addEventListener('ended', () => { bar.style.width = '0%'; document.getElementById('cur').textContent = '0:00'; });
+    audio.addEventListener('loadedmetadata', () => document.getElementById('dur').textContent = fmt(audio.duration));
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      bar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      document.getElementById('cur').textContent = fmt(audio.currentTime);
+    });
+    document.getElementById('seek').addEventListener('click', e => {
+      if (!audio.duration) return;
+      const r = e.currentTarget.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    });
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+  </script>
+
+</body>
+</html>

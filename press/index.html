@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press Kit — Jared Walker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:     #C9A84C;
+      --gold-lt:  #E8C96A;
+      --cream:    #F5EDD8;
+      --dark:     #0D0B08;
+      --mid:      #2A2118;
+      --text-dim: #8A7A60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .35;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: rgba(13,11,8,.97);
+      border-bottom: 1px solid rgba(201,168,76,.15);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo img { height: 34px; filter: invert(1) sepia(1) brightness(1.35) saturate(1.2); opacity: .9; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .75;
+      transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold); }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--cream); transition: transform .25s, opacity .25s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,11,8,.98);
+      z-index: 190;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a { color: var(--cream); text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; letter-spacing: .1em; transition: color .2s; }
+    .nav-drawer a:hover { color: var(--gold); }
+
+    /* ─── PAGE ─── */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 8vw 80px;
+    }
+
+    .page-header {
+      margin-bottom: 64px;
+    }
+    .section-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .page-sub {
+      font-size: .95rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    /* ─── USAGE NOTICE ─── */
+    .usage-notice {
+      padding: 20px 24px;
+      border: 1px solid rgba(201,168,76,.25);
+      background: rgba(201,168,76,.05);
+      margin-bottom: 56px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .usage-notice-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .usage-notice p {
+      font-size: .82rem;
+      color: rgba(245,237,216,.7);
+      line-height: 1.7;
+    }
+    .usage-notice strong { color: var(--cream); }
+
+    /* ─── SECTION HEADING ─── */
+    .kit-section { margin-bottom: 64px; }
+    .kit-section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: .12em;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .kit-section-desc {
+      font-size: .78rem;
+      color: var(--text-dim);
+      margin-bottom: 28px;
+    }
+
+    /* ─── LOGO GRID ─── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .logo-card {
+      border: 1px solid rgba(201,168,76,.12);
+      background: rgba(201,168,76,.025);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .logo-card:hover { border-color: rgba(201,168,76,.35); }
+
+    .logo-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+      min-height: 160px;
+    }
+    .logo-preview.bg-white  { background: #ffffff; }
+    .logo-preview.bg-cream  { background: #F5EDD8; }
+    .logo-preview.bg-dark   { background: #0D0B08; }
+    .logo-preview.bg-mid    { background: #2A2118; }
+
+    .logo-preview img {
+      max-width: 100%;
+      max-height: 100px;
+      object-fit: contain;
+    }
+
+    .logo-card-body {
+      padding: 18px 20px;
+      border-top: 1px solid rgba(201,168,76,.1);
+    }
+    .logo-card-name {
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .logo-card-use {
+      font-size: .72rem;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .logo-card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tag {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid rgba(201,168,76,.2);
+      color: var(--gold);
+      background: rgba(201,168,76,.06);
+    }
+    .tag.tag-dark { border-color: rgba(245,237,216,.15); color: var(--text-dim); background: transparent; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 600;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-download:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-download svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+
+    /* ─── RULES ─── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .rule-card {
+      padding: 20px 22px;
+      border: 1px solid rgba(201,168,76,.1);
+      background: rgba(201,168,76,.02);
+    }
+    .rule-card-label {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .rule-card-label.do   { color: #52B788; }
+    .rule-card-label.dont { color: #E07A5F; }
+    .rule-card ul { list-style: none; padding: 0; }
+    .rule-card li {
+      font-size: .78rem;
+      color: rgba(245,237,216,.7);
+      line-height: 1.6;
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .rule-card li::before { content: '–'; position: absolute; left: 0; color: var(--text-dim); }
+
+    /* ─── BIO ─── */
+    .bio-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(201,168,76,.15);
+    }
+    .bio-tab {
+      padding: 10px 22px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color .2s, border-color .2s;
+    }
+    .bio-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .bio-tab:hover:not(.active) { color: var(--cream); }
+
+    .bio-panel { display: none; }
+    .bio-panel.active { display: block; }
+
+    .bio-text {
+      padding: 28px 32px;
+      border: 1px solid rgba(201,168,76,.12);
+      background: rgba(201,168,76,.02);
+      margin-bottom: 12px;
+    }
+    .bio-text p {
+      font-size: .9rem;
+      line-height: 1.85;
+      color: rgba(245,237,216,.82);
+      margin-bottom: 18px;
+    }
+    .bio-text p:last-child { margin-bottom: 0; }
+    .bio-text blockquote {
+      margin: 22px 0;
+      padding: 16px 22px;
+      border-left: 3px solid var(--gold);
+      background: rgba(201,168,76,.05);
+    }
+    .bio-text blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: .95rem;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    .bio-text blockquote cite {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background: transparent;
+      border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-copy:hover { background: rgba(201,168,76,.08); border-color: var(--gold); }
+    .btn-copy.copied { color: #52B788; border-color: #52B788; }
+    .btn-copy svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* ─── PHOTOS ─── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .photo-card {
+      border: 1px solid rgba(201,168,76,.12);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .photo-card:hover { border-color: rgba(201,168,76,.35); }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo-card-body {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(201,168,76,.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .photo-card-meta { flex: 1; min-width: 0; }
+    .photo-card-name {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .photo-card-spec {
+      font-size: .68rem;
+      color: var(--text-dim);
+    }
+
+    /* ─── CONTACT BAR ─── */
+    .contact-bar {
+      margin-top: 64px;
+      padding: 32px 36px;
+      border: 1px solid rgba(201,168,76,.2);
+      background: rgba(201,168,76,.03);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .contact-bar h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 4px; }
+    .contact-bar p { font-size: .8rem; color: var(--text-dim); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 600;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080705;
+      padding: 36px 8vw;
+      border-top: 1px solid rgba(201,168,76,.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo img { height: 28px; filter: invert(1) sepia(1) brightness(1.2) saturate(1.1); opacity: .75; }
+    .footer-copy { font-size: .68rem; color: var(--text-dim); letter-spacing: .07em; }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a { font-size: .68rem; color: var(--text-dim); text-decoration: none; letter-spacing: .07em; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .page-wrap { padding: 100px 20px 60px; }
+      .rules-grid { grid-template-columns: 1fr; }
+      .contact-bar { flex-direction: column; }
+      footer { flex-direction: column; text-align: center; gap: 12px; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="nav-logo">
+      <img src="/assets/logos/jw-monogram.png" alt="Jared Walker" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#music">Music</a></li>
+      <li><a href="/#shows">Shows</a></li>
+      <li><a href="/#connect">Connect</a></li>
+      <li><a href="/press/" class="active">Press</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="/#about"   onclick="closeDrawer()">About</a>
+    <a href="/#music"   onclick="closeDrawer()">Music</a>
+    <a href="/#shows"   onclick="closeDrawer()">Shows</a>
+    <a href="/#connect" onclick="closeDrawer()">Connect</a>
+    <a href="/press/"         onclick="closeDrawer()">Press</a>
+  </div>
+
+  <!-- PAGE -->
+  <div class="page-wrap">
+
+    <!-- Header -->
+    <div class="page-header">
+      <div class="section-label">Media</div>
+      <h1 class="page-title">Press Kit</h1>
+      <p class="page-sub">
+        Approved logos, brand assets, and photos for use by venues, promoters, and media. Please review the usage guidelines before downloading.
+      </p>
+    </div>
+
+    <!-- Usage Notice -->
+    <div class="usage-notice">
+      <div class="usage-notice-icon">📋</div>
+      <p>
+        <strong>Usage guidelines:</strong> All assets are approved for promotional use in connection with Jared Walker performances and press coverage only. Do not alter, recolor, or distort any logo. For questions or additional assets, contact <strong>info@jcountrymusic.com</strong>.
+      </p>
+    </div>
+
+    <!-- Bio Copy -->
+    <div class="kit-section">
+      <div class="kit-section-title">Bio Copy</div>
+      <p class="kit-section-desc">Approved bios for event listings, press features, and venue marketing. Click to copy.</p>
+
+      <div class="bio-tabs">
+        <button class="bio-tab active" onclick="switchBio('short')">Short Bio</button>
+        <button class="bio-tab" onclick="switchBio('long')">Full Bio</button>
+      </div>
+
+      <!-- Short Bio -->
+      <div class="bio-panel active" id="bio-short">
+        <div class="bio-text" id="bio-short-text">
+          <p>Jared Walker is a traditional country artist rooted in small-town life — born in California, raised on the open fields of Ohio. With a voice built for wide-open spaces and a natural stage presence, he performs country music the way it was meant to be made: honest, lived-in, and no shortcuts taken.</p>
+          <p>Influenced by Elvis Presley, Dwight Yoakam, George Strait, and Willie Nelson, Walker started performing at 17 alongside his father in <em>The Dirty River Band</em>. His music carries that roots DNA forward — high production quality married to real emotion. His debut single "Down On The River" and follow-up "Runnin'" are available on all major platforms.</p>
+        </div>
+        <button class="btn-copy" onclick="copyBio('short')">
+          <svg viewBox="0 0 16 16"><path d="M4 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z"/></svg>
+          Copy Short Bio
+        </button>
+      </div>
+
+      <!-- Full Bio -->
+      <div class="bio-panel" id="bio-long">
+        <div class="bio-text" id="bio-long-text">
+          <p>Born in California, raised on the open fields of Ohio — Jared Walker carries both in his music. With a natural presence that commands a room and a voice built for wide-open spaces, he's the kind of performer who walks in looking like he belongs: worn denim, a flannel rolled to the elbows, boots that have seen some miles.</p>
+          <p>His father played in <em>The Dirty River Band</em> — blues, rock, country, all of it. At 17, Jared joined him on stage, picked up acoustic guitar, and found a voice that was unmistakably his own. He gravitated toward the artists who never faked it — Elvis Presley, Dwight Yoakam, George Strait, Willie Nelson. Songwriters who told the truth.</p>
+          <blockquote>
+            <p>"Songwriting is a hundred percent therapy. When you let those emotions flow, that's when the real songs happen."</p>
+            <cite>— Jared Walker</cite>
+          </blockquote>
+          <p>Rooted in small-town life — the kind of place where the work is hard, the people are real, and the music means something — Walker makes country without trends or shortcuts. His debut single "Down On The River" is an upbeat, 90s-flavored anthem born from summers spent fishing and boating. His follow-up single "Runnin'" builds on that sound, available now on all major platforms.</p>
+        </div>
+        <button class="btn-copy" onclick="copyBio('long')">
+          <svg viewBox="0 0 16 16"><path d="M4 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z"/></svg>
+          Copy Full Bio
+        </button>
+      </div>
+    </div>
+
+    <!-- Logos: Wordmark -->
+    <div class="kit-section">
+      <div class="kit-section-title">Wordmark Logos</div>
+      <p class="kit-section-desc">Full name lockup — use for posters, flyers, and event marketing.</p>
+
+      <div class="logo-grid">
+
+        <!-- Black wordmark -->
+        <div class="logo-card">
+          <div class="logo-preview bg-white">
+            <img src="/assets/logos/Jared Walker _black.png" alt="Jared Walker — Black Wordmark" />
+          </div>
+          <div class="logo-card-body">
+            <div class="logo-card-name">Black Wordmark</div>
+            <div class="logo-card-use">Use on white, cream, or light-colored backgrounds.</div>
+            <div class="logo-card-tags">
+              <span class="tag">PNG</span>
+              <span class="tag tag-dark">Light Backgrounds</span>
+            </div>
+            <a href="/assets/logos/Jared Walker _black.png" download="JaredWalker-Logo-Black.png" class="btn-download">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download PNG
+            </a>
+          </div>
+        </div>
+
+        <!-- Full color wordmark -->
+        <div class="logo-card">
+          <div class="logo-preview bg-white">
+            <img src="/assets/logos/Jared Walker _full color.png" alt="Jared Walker — Full Color Wordmark" />
+          </div>
+          <div class="logo-card-body">
+            <div class="logo-card-name">Full Color Wordmark</div>
+            <div class="logo-card-use">Use on white or light backgrounds when color is preferred.</div>
+            <div class="logo-card-tags">
+              <span class="tag">PNG</span>
+              <span class="tag tag-dark">Light Backgrounds</span>
+            </div>
+            <a href="/assets/logos/Jared Walker _full color.png" download="JaredWalker-Logo-FullColor.png" class="btn-download">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download PNG
+            </a>
+          </div>
+        </div>
+
+        <!-- White wordmark -->
+        <div class="logo-card">
+          <div class="logo-preview bg-dark">
+            <img src="/assets/logos/Jared Walker _white.png" alt="Jared Walker — White Wordmark" />
+          </div>
+          <div class="logo-card-body">
+            <div class="logo-card-name">White Wordmark</div>
+            <div class="logo-card-use">Use on dark, black, or photo backgrounds.</div>
+            <div class="logo-card-tags">
+              <span class="tag">PNG</span>
+              <span class="tag tag-dark">Dark Backgrounds</span>
+            </div>
+            <a href="/assets/logos/Jared Walker _white.png" download="JaredWalker-Logo-White.png" class="btn-download">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download PNG
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Logos: Monogram -->
+    <div class="kit-section">
+      <div class="kit-section-title">Monogram</div>
+      <p class="kit-section-desc">JW mark — for profile icons, watermarks, and compact placements.</p>
+
+      <div class="logo-grid">
+
+        <div class="logo-card">
+          <div class="logo-preview bg-cream">
+            <img src="/assets/logos/Jared Walker Monogram.png" alt="JW Monogram" style="max-height: 90px;" />
+          </div>
+          <div class="logo-card-body">
+            <div class="logo-card-name">JW Monogram</div>
+            <div class="logo-card-use">Use for profile photos, watermarks, and small-format placements.</div>
+            <div class="logo-card-tags">
+              <span class="tag">PNG</span>
+              <span class="tag tag-dark">Any Background</span>
+            </div>
+            <a href="/assets/logos/Jared Walker Monogram.png" download="JaredWalker-Monogram.png" class="btn-download">
+              <svg viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V2h3v6H12L8 12zm-5 2h10v1.5H3V14z"/></svg>
+              Download PNG
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Usage Rules -->
+    <div class="kit-section">
+      <div class="kit-section-title">Logo Usage Rules</div>
+      <p class="kit-section-desc">Keep the brand consistent — these apply to all assets.</p>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-card-label do">✓ Do</div>
+          <ul>
+            <li>Use the approved logo files as provided</li>
+            <li>Maintain clear space around the logo equal to the cap height</li>
+            <li>Use black on light backgrounds, white on dark backgrounds</li>
+            <li>Scale proportionally — never stretch or squish</li>
+            <li>Use the monogram when space is limited</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <div class="rule-card-label dont">✕ Don't</div>
+          <ul>
+            <li>Recolor or apply effects to any logo</li>
+            <li>Place black logo on dark backgrounds (use white version)</li>
+            <li>Outline, shadow, or add gradients to the logo</li>
+            <li>Rearrange or combine logo elements</li>
+            <li>Use low-resolution screenshots in place of provided files</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photos (placeholder) -->
+    <div class="kit-section">
+      <div class="kit-section-title">Photos</div>
+      <p class="kit-section-desc">High-resolution press photos for editorial and promotional use.</p>
+
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <img src="/assets/photos/Jared Live Performance.png" alt="Jared Walker — Live Performance" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Live Performance</div>
+              <div class="photo-card-spec">3000 × 2000</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0;">
+              <a href="/assets/photos/Jared Live Performance.png" download="JaredWalker-LivePerformance.png" class="btn-download" style="width:auto;padding:9px 12px;">PNG</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="/assets/photos/Jared Live Performances_Photos.webp" alt="Jared Walker — Live" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Live — Crowd Shot</div>
+              <div class="photo-card-spec">3000 × 2000</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0;">
+              <a href="/assets/photos/Jared Live Performances_Photos.webp" download="JaredWalker-Live-CrowdShot.webp" class="btn-download" style="width:auto;padding:9px 12px;">WebP</a>
+              <a href="/assets/photos/Jared Live Performances_Photos.png" download="JaredWalker-Live-CrowdShot.png" class="btn-download" style="width:auto;padding:9px 12px;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);">PNG</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="/assets/photos/Jared Mid Performance.webp" alt="Jared Walker — Mid Performance" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Mid Performance</div>
+              <div class="photo-card-spec">3000 × 2000</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0;">
+              <a href="/assets/photos/Jared Mid Performance.webp" download="JaredWalker-MidPerformance.webp" class="btn-download" style="width:auto;padding:9px 12px;">WebP</a>
+              <a href="/assets/photos/Jared Mid Performance.png" download="JaredWalker-MidPerformance.png" class="btn-download" style="width:auto;padding:9px 12px;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);">PNG</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="/assets/photos/Jared Playing Solo.webp" alt="Jared Walker — Playing Solo" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Playing Solo</div>
+              <div class="photo-card-spec">3000 × 2000</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0;">
+              <a href="/assets/photos/Jared Playing Solo.webp" download="JaredWalker-PlayingSolo.webp" class="btn-download" style="width:auto;padding:9px 12px;">WebP</a>
+              <a href="/assets/photos/Jared Playing Solo.png" download="JaredWalker-PlayingSolo.png" class="btn-download" style="width:auto;padding:9px 12px;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);">PNG</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="/assets/photos/Jared with Britches Down.webp" alt="Jared Walker — Stage" loading="lazy" />
+          <div class="photo-card-body">
+            <div class="photo-card-meta">
+              <div class="photo-card-name">Stage Shot</div>
+              <div class="photo-card-spec">3000 × 2000</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-shrink:0;">
+              <a href="/assets/photos/Jared with Britches Down.webp" download="JaredWalker-StageShot.webp" class="btn-download" style="width:auto;padding:9px 12px;">WebP</a>
+              <a href="/assets/photos/Jared with Britches Down.png" download="JaredWalker-StageShot.png" class="btn-download" style="width:auto;padding:9px 12px;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);">PNG</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+      <div>
+        <h3>Need Something Else?</h3>
+        <p>Bio copy, EPK, high-res photos, or custom asset requests — get in touch.</p>
+      </div>
+      <a href="/contact/" class="btn-primary">Contact Us</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="/assets/logos/jw-monogram.png" alt="Jared Walker" />
+    </div>
+    <div class="footer-copy">© 2026 Jared Walker. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/artist/jared-walker/310812008" target="_blank">Apple Music</a>
+      <a href="https://www.youtube.com/@JaredWalkerMusic" target="_blank">YouTube</a>
+      <a href="/">Home</a>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('nav-burger');
+    const drawer = document.getElementById('nav-drawer');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      drawer.classList.toggle('open');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeDrawer() {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Bio tabs
+    function switchBio(which) {
+      document.querySelectorAll('.bio-tab').forEach((t, i) => {
+        t.classList.toggle('active', (which === 'short' && i === 0) || (which === 'long' && i === 1));
+      });
+      document.getElementById('bio-short').classList.toggle('active', which === 'short');
+      document.getElementById('bio-long').classList.toggle('active', which === 'long');
+    }
+
+    // Copy bio text (strips HTML tags)
+    function copyBio(which) {
+      const el = document.getElementById('bio-' + which + '-text');
+      const text = el.innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = el.nextElementSibling;
+        const orig = btn.innerHTML;
+        btn.innerHTML = btn.innerHTML.replace(/Copy.*/,'Copied!');
+        btn.classList.add('copied');
+        setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
